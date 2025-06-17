@@ -22,6 +22,21 @@ from keywords import (
     get_word_category
 )
 
+SPECIAL_WORDS = {
+    "62": {
+        "meaning": "盒子/笨蛋",
+        "type": "俚语",
+        "usage": [
+            "这个62，啥都不懂！",
+            "别像个62一样思考问题。",
+            "一个62大的盒子。"
+        ],
+        "origin": "数字谐音",
+        "humor_level": "高",
+        "fun_fact": "在杭州话中，62既可以指盒子，也可以调侃某人笨。"
+    }
+}
+
 class HangzhouDict:
     """杭州话词典类"""
     
@@ -126,6 +141,14 @@ class HangzhouDict:
         print("=== 杭州话词典统计 ===")
         for category, count in stats.items():
             print(f"{category}: {count} 个词汇")
+
+def get_special_word_info(word):
+    """获取特殊词汇信息"""
+    return SPECIAL_WORDS.get(word, None)
+
+def is_special_word(word):
+    """判断是否为特殊词汇"""
+    return word in SPECIAL_WORDS
 
 def main():
     """主函数"""

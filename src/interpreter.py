@@ -11,6 +11,7 @@ from parser import (
     FunctionDef, ReturnStatement, BinaryOp, UnaryOp, Literal, Identifier, FunctionCall
 )
 from keywords import HANGZHOU_KEYWORDS
+import random
 
 class ReturnException(Exception):
     """用于函数返回的异常"""
@@ -67,6 +68,15 @@ class HangzhouInterpreter:
         
         # 内置函数
         self._setup_builtins()
+        
+        self._easter_egg_counter = 0
+        self._secret_62_messages = [
+            "哎呀，你这个62！",
+            "62不62啊，老倌？",
+            "格毛是个62！",
+            "别太62了！",
+            "这代码咋这么62呢？"
+        ]
     
     def _setup_builtins(self) -> None:
         """设置内置函数"""
@@ -322,6 +332,24 @@ class HangzhouInterpreter:
             return value
         else:
             return str(value)
+
+    def _check_62_easter_egg(self):
+        """
+        62彩蛋：随机触发有趣的杭州话提示
+        """
+        self._easter_egg_counter += 1
+        if self._easter_egg_counter % 62 == 0:
+            # 每62次操作触发一次彩蛋
+            message = random.choice(self._secret_62_messages)
+            print(f"\n🥚 [62彩蛋] {message}")
+
+    def execute(self, ast):
+        """
+        执行抽象语法树
+        """
+        self._check_62_easter_egg()
+        # 原有的执行逻辑
+        ...
 
 def interpret(program: Program) -> List[str]:
     """便捷函数：解释执行程序"""
