@@ -72,10 +72,18 @@ class HangzhouInterpreter:
         self._easter_egg_counter = 0
         self._secret_62_messages = [
             "哎呀，你这个62！",
-            "62不62啊，老倌？",
+            "62不62啊？",
             "格毛是个62！",
             "别太62了！",
             "这代码咋这么62呢？"
+        ]
+        # 新增十三点彩蛋消息
+        self._secret_13_messages = [
+            "哎呀，这代码怕是十三点啊！",
+            "十三点不十三点？",
+            "格毛的逻辑咋这么十三点？",
+            "嫑整这么十三点的代码！",
+            "这代码咋这么不拎清？"
         ]
     
     def _setup_builtins(self) -> None:
@@ -343,11 +351,20 @@ class HangzhouInterpreter:
             message = random.choice(self._secret_62_messages)
             print(f"\n🥚 [62彩蛋] {message}")
 
+    def _check_13_easter_egg(self):
+        """
+        十三点彩蛋：随机触发有趣的杭州话提示
+        """
+        if random.random() < 0.13:  # 13%的概率触发
+            message = random.choice(self._secret_13_messages)
+            print(f"\n🥚 [十三点彩蛋] {message}")
+
     def execute(self, ast):
         """
         执行抽象语法树
         """
         self._check_62_easter_egg()
+        self._check_13_easter_egg()  # 添加十三点彩蛋检查
         # 原有的执行逻辑
         ...
 
