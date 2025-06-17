@@ -514,7 +514,7 @@ debug_ast("话说：'你好'")
 1. [Wikipedia](https://zh.wikipedia.org/zh-hans/%E6%9D%AD%E5%B7%9E%E8%AF%9D#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99)
 2. [Chazidian](https://www.chazidian.com/fangyan1787/)
 3. [杭州话与普通话拼音对照表](https://z.hangzhou.com.cn/2014/hzh/content/2014-10/14/content_5482920.htm)
-4. [杭州方言词典]（https://z.hangzhou.com.cn/2014/hzh/content/2014-10/14/content_5483005_2.htm）
+4. [杭州方言词典](https://z.hangzhou.com.cn/2014/hzh/content/2014-10/14/content_5483005_2.htm)
 
 **让编程说杭州话，让代码更有温度！**
 
