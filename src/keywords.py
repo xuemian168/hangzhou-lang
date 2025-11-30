@@ -29,6 +29,7 @@ HANGZHOU_KEYWORDS = {
     # 函数
     '会做事': 'def',      # 会做事情
     '做事体': 'def',      # 干活儿
+    '介个套': 'def',      # 怎么办 → 定义一个办法
     '有数': 'return',     # 懂了、明白了
     '晓得': 'return',     # 知道
     
@@ -65,7 +66,11 @@ HANGZHOU_KEYWORDS = {
     '跳出': 'break',
     '继续': 'continue',
     '歇力': 'break',      # 休息
-    
+
+    # 系统函数
+    '撒宽': 'sleep',      # 随意放松 → 休眠
+    '撒子儿': 'random',   # 玩耍 → 随机数
+
     # 模块导入
     '进来': 'import',
     '从': 'from',
