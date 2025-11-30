@@ -12,6 +12,7 @@ from parser import (
 )
 from keywords import HANGZHOU_KEYWORDS
 import random
+import time
 
 class ReturnException(Exception):
     """用于函数返回的异常"""
@@ -103,7 +104,37 @@ class HangzhouInterpreter:
         self.global_env.define('是数字', lambda x: isinstance(x, (int, float)))
         self.global_env.define('是字符串', lambda x: isinstance(x, str))
         self.global_env.define('是布尔', lambda x: isinstance(x, bool))
+
+        # 系统函数
+        self.global_env.define('撒宽', self._builtin_sleep)      # sleep - 随意放松
+        self.global_env.define('撒子儿', self._builtin_random)   # random - 玩耍/随机
     
+    def _builtin_sleep(self, ms: Union[int, float]) -> None:
+        """
+        撒宽 - 休眠函数
+        参数: ms - 毫秒数
+        """
+        if not isinstance(ms, (int, float)):
+            raise TypeError("撒宽的参数必须是数字（毫秒）")
+        time.sleep(ms / 1000)
+
+    def _builtin_random(self, *args) -> Union[int, float]:
+        """
+        撒子儿 - 随机数函数
+        用法:
+          撒子儿()        -> 0到1之间的随机小数
+          撒子儿(max)     -> 0到max之间的随机整数
+          撒子儿(min,max) -> min到max之间的随机整数
+        """
+        if len(args) == 0:
+            return random.random()
+        elif len(args) == 1:
+            return random.randint(0, int(args[0]))
+        elif len(args) == 2:
+            return random.randint(int(args[0]), int(args[1]))
+        else:
+            raise TypeError("撒子儿最多接受两个参数")
+
     def error(self, message: str) -> None:
         """抛出运行时错误"""
         raise RuntimeError(f"运行时错误: {message}")

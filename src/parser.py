@@ -176,8 +176,8 @@ class HangzhouParser:
         elif self.match(TokenType.KEYWORD) and self.current_token.value == '一息息':
             return self.parse_while_statement()
         
-        # 函数定义：会做事 name(params)
-        elif self.match(TokenType.KEYWORD) and self.current_token.value == '会做事':
+        # 函数定义：会做事/做事体/介个套 name(params)
+        elif self.match(TokenType.KEYWORD) and self.current_token.value in ['会做事', '做事体', '介个套']:
             return self.parse_function_def()
         
         # 返回语句：有数 expression
